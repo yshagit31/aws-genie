@@ -1,0 +1,23 @@
+{
+    "manifest_version": 3,
+    "name": "AWS Genie",
+    "version": "0.0.1",
+    "description": "AI-powered assistant for AWS services.",
+    "permissions": [
+      "activeTab","scripting"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["*://*.aws.amazon.com/*"],
+        "js": ["content.js"],
+        "css": ["styles.css"]
+      }
+    ],
+    "action": {
+      "default_popup": "index.html"
+    }
+  }
+  
