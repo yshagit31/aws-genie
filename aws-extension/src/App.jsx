@@ -1,35 +1,109 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// import React, { useState } from 'react';
+// import axios from 'axios';
 
-function App() {
-  const [count, setCount] = useState(0)
+// const App = () => {
+
+//   const [userPrompt,setuserPrompt]=useState("");
+//   const [result,setresult]=useState("");
+  
+//   const handleClick= () =>{
+//       axios.post('http://localhost:3000/generate' ,{prompt: userPrompt})
+//       .then((res)=>{
+//         console.log("Response",res.data);
+//         setresult(res.data.response);
+//       })
+//       .catch((error)=>{
+//         console.error("Erorr", error);
+//       })
+//   };
+
+//   return (
+//      <section>
+//       <div>AWS Genie</div>
+//       <div>
+//         Enter the prompt <input type="text"  value={userPrompt} onChange={(e)=> setuserPrompt(e.target.value)}/>
+//         <button onClick={handleClick}>Go</button>
+//       </div>
+//       {result && <div id="response">{result}</div>}
+//      </section>
+//   );
+// };
+
+// export default App;
+
+
+import { Webchat, WebchatProvider, Fab, getClient } from "@botpress/webchat";
+import { buildTheme } from "@botpress/webchat-generator";
+// import { useState } from "react";
+
+const { theme, style } = buildTheme({
+  themeName: "prism",
+  themeColor: "#634433",
+});
+
+//Add your Client ID here ⬇️
+const clientId = "3497f87d-95fe-4561-b883-bc370ebf5444";
+
+export default function App() {
+  const client = getClient({ clientId });
+  const [isWebchatOpen, setIsWebchatOpen] = useState(false);
+
+  const toggleWebchat = () => {
+    setIsWebchatOpen((prevState) => !prevState);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button id='tooltip' onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div style={{ width: "100vw", height: "100vh" }}>
+      <style>{style}</style>
+      <WebchatProvider
+        theme={theme}
+        client={client}
+      >
+        {/* <Fab onClick={toggleWebchat} /> */}
+        <div
+          style={{
+            display: isWebchatOpen ? "block" : "none",
+          }}
+        >
+          <Webchat />
+        </div>
+      </WebchatProvider>
+    </div>
+  );
 }
 
-export default App
+// import { Webchat, WebchatProvider, Fab, getClient } from "@botpress/webchat";
+// import { buildTheme } from "@botpress/webchat-generator";  // Ensure this is imported
+// import { useState } from "react";
+
+// // Add your Client ID here ⬇️
+// const clientId = "3497f87d-95fe-4561-b883-bc370ebf5444";
+
+// const { theme, style } = buildTheme({
+//   themeName: "prism",
+//   themeColor: "#634433",
+// });
+
+// export default function App() {
+//   const client = getClient({ clientId });
+//   const [isWebchatOpen, setIsWebchatOpen] = useState(false);
+
+//   const toggleWebchat = () => {
+//     setIsWebchatOpen((prevState) => !prevState);
+//   };
+
+//   return (
+//     <div style={{ width: "100vw", height: "100vh" }}>
+//       <style>{style}</style>
+//       <WebchatProvider theme={theme} client={client}>
+//         <div
+//           style={{
+//             display: isWebchatOpen ? "block" : "none",
+//           }}
+//         >
+//           <Webchat />
+//         </div>
+//       </WebchatProvider>
+//     </div>
+//   );
+// }
