@@ -32,45 +32,43 @@
 // export default App;
 
 
-import { Webchat, WebchatProvider, Fab, getClient } from "@botpress/webchat";
-import { buildTheme } from "@botpress/webchat-generator";
+// import { Webchat, WebchatProvider, Fab, getClient } from "@botpress/webchat";
+// import { buildTheme } from "@botpress/webchat-generator";
 // import { useState } from "react";
 
-const { theme, style } = buildTheme({
-  themeName: "prism",
-  themeColor: "#634433",
-});
+// const { theme, style } = buildTheme({
+//   themeName: "prism",
+//   themeColor: "#634433",
+// });
 
-//Add your Client ID here ⬇️
-const clientId = "3497f87d-95fe-4561-b883-bc370ebf5444";
+// //Add your Client ID here ⬇️
+// const clientId = "3497f87d-95fe-4561-b883-bc370ebf5444";
 
-export default function App() {
-  const client = getClient({ clientId });
-  const [isWebchatOpen, setIsWebchatOpen] = useState(false);
+// export default function App() {
+//   const client = getClient({ clientId });
+//   const [isWebchatOpen, setIsWebchatOpen] = useState(false);
 
-  const toggleWebchat = () => {
-    setIsWebchatOpen((prevState) => !prevState);
-  };
+  
+//   return (
+//     <div style={{ width: "100vw", height: "100vh" }}>
+//       <style>{style}</style>
+//       <WebchatProvider
+//         theme={theme}
+//         client={client}
+//       >
+//            <Fab onClick={toggleWebchat} />
+//         <div
+//           style={{
+//             display: isWebchatOpen ? "block" : "none",
+//           }}
+//         >
+//           <Webchat />
+//         </div>
+//       </WebchatProvider>
+//     </div>
+//   );
+// }
 
-  return (
-    <div style={{ width: "100vw", height: "100vh" }}>
-      <style>{style}</style>
-      <WebchatProvider
-        theme={theme}
-        client={client}
-      >
-        {/* <Fab onClick={toggleWebchat} /> */}
-        <div
-          style={{
-            display: isWebchatOpen ? "block" : "none",
-          }}
-        >
-          <Webchat />
-        </div>
-      </WebchatProvider>
-    </div>
-  );
-}
 
 // import { Webchat, WebchatProvider, Fab, getClient } from "@botpress/webchat";
 // import { buildTheme } from "@botpress/webchat-generator";  // Ensure this is imported
@@ -107,3 +105,79 @@ export default function App() {
 //     </div>
 //   );
 // }
+
+
+// import { Webchat, WebchatProvider, Fab, getClient } from "@botpress/webchat";
+// import { buildTheme } from "@botpress/webchat-generator";
+// import { useState } from "react";
+// const { theme, style } = buildTheme({
+//   themeName: "prism",
+//   themeColor: "#634433",
+// });
+// //Add your Client ID here ⬇️
+// const clientId = "3497f87d-95fe-4561-b883-bc370ebf5444";
+// export default function App() {
+//   const client = getClient({ clientId });
+//   const [isWebchatOpen, setIsWebchatOpen] = useState(false);
+//   const toggleWebchat = () => {
+//     setIsWebchatOpen((prevState) => !prevState);
+//   };
+//   return (
+//     // <div style={{ width: "100vw", height: "100vh" }}>
+//       <div style={{ width: "400px", height: "100vh" }}>
+//       <style>{style}</style>
+//       <WebchatProvider
+//         theme={theme}
+//         client={client}
+//       >
+//         <Fab onClick={toggleWebchat} />
+//         <div
+//           style={{
+//             display: isWebchatOpen ? "block" : "none",
+//           }}
+//         >
+//           <Webchat />
+//         </div>
+//       </WebchatProvider>
+//     </div>
+//   );
+// }
+
+
+import { Webchat, WebchatProvider, getClient } from "@botpress/webchat";
+import { buildTheme } from "@botpress/webchat-generator";
+
+const { theme, style } = buildTheme({
+  themeName: "prism",
+  themeColor: "#634433",
+});
+
+// Add your Client ID here ⬇️
+const clientId = "3497f87d-95fe-4561-b883-bc370ebf5444";
+
+export default function App() {
+  const client = getClient({ clientId });
+
+  return (
+    <div style={{ width: "440px", height: "600px" }}>
+      <style>{style}</style>
+      <WebchatProvider theme={theme} client={client}>
+        {/* Chat Container Always Visible */}
+        <div
+          style={{
+            // position: "fixed",
+            // bottom: "20px",
+            // right: "20px",
+            width: "440px",
+            height: "600px",
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+            borderRadius: "10px",
+            overflow: "hidden",
+          }}
+        >
+          <Webchat hideWidget />
+        </div>
+      </WebchatProvider>
+    </div>
+  );
+}

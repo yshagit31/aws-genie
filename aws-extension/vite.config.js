@@ -1,5 +1,5 @@
-// import { defineConfig } from 'vite'
-// import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
 // // import { resolve } from 'path';
 // // import { copyFileSync } from 'fs';
@@ -16,32 +16,31 @@
 
 // // https://vite.dev/config/
 
-// export default defineConfig({
-//   plugins: [react()],
-// })
-
-
-import { defineConfig } from 'vite';  // Ensure this is present
-import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks(id) {
-          if (id.includes('node_modules')) {
-            if (id.includes('@botpress/webchat')) {
-              return 'botpress-webchat';
-            }
-            if (id.includes('react')) {
-              return 'react-vendor';
-            }
-            return 'vendor';
-          }
-        }
-      }
-    },
-    chunkSizeWarningLimit: 1000  // Increase the limit to 1000 kB (1 MB)
-  }
-});
+})
+
+
+// import { defineConfig } from 'vite';  // Ensure this is present
+// import react from '@vitejs/plugin-react';
+// export default defineConfig({
+//   plugins: [react()],
+//   build: {
+//     rollupOptions: {
+//       output: {
+//         manualChunks(id) {
+//           if (id.includes('node_modules')) {
+//             if (id.includes('@botpress/webchat')) {
+//               return 'botpress-webchat';
+//             }
+//             if (id.includes('react')) {
+//               return 'react-vendor';
+//             }
+//             return 'vendor';
+//           }
+//         }
+//       }
+//     },
+//   }
+// });
 
