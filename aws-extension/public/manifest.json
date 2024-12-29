@@ -3,6 +3,10 @@
     "name": "AWS Genie",
     "version": "0.0.1",
     "description": "AI-powered assistant for AWS services.",
+    "icons":
+    {
+      "128":"Icon.png"
+    },
     "permissions": [
       "activeTab","scripting"
     ],
